@@ -19,6 +19,7 @@ class CreatePagesTable extends Migration
             $table->boolean('publish')->default(0);
             $table->timestamps();
         });
+        DB::statement('ALTER TABLE pages AUTO_INCREMENT = 0;');
     }
 
     /**

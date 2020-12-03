@@ -53,7 +53,7 @@
                     {!! Form::checkbox('publish', '0', array('class' => 'form-control')) !!}
                     {{-- <input type="hidden" value="0" name="publish" class="switch-input">                            --}}
                     {{-- <input type="checkbox" name="publish" class="switch-input" value="1" {{ old('publish') ? 'checked="checked"' : '' }}/> --}}
-                    {{-- <input type="checkbox" name="adopted" id="adopted" value="1" {{  ($cat->adopted == 1 ? ' checked' : '') }}> --}}
+                   
 		        </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -63,7 +63,18 @@
                     <strong>Current Image:</strong><br>
                 <img src="{{ url('uploads/'.$post->image) }}" alt="image" width="300px;" height="300px;" alt="image" />
                 </div>
-		    </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+		        <div class="form-group">    
+                {{ Form::label('author_id', 'Author:') }}
+                    <select class="form-control" name="author_id">
+                        @foreach($authors as $author)
+                            <option value='{{ $author->id }}'>{{ $author->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
 		    <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Content:</strong>

@@ -39,7 +39,7 @@ class PageController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'publish' => 'required',
+            'publish' => 'nullable',
         ]);
         Page::create($request->all());
         return json_encode(array(
@@ -52,18 +52,6 @@ class PageController extends Controller
         // $page->save();  
         // return response()->json($page);   
         
-        
-        // $request->validate([
-        //     'name'       => 'required|max:255',
-        //     'publish' => 'nullable',
-        //   ]);
-    
-        //   $page = Page::updateOrCreate(['id' => $request->id], [
-        //             'name' => $request->title,
-        //             'publish' => $request->publish
-        //           ]);
-    
-        //   return response()->json($page);
         
 
     public function show($id)
@@ -80,12 +68,7 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getDatabyID($id)
-    {
-        $page=Page::find($id);
-        return response()->json($page);
-        
-    }
+    
 
     /**
      * Update the specified resource in storage.
@@ -94,16 +77,19 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function edit($id)
     {
-        $page  = Page::find($request->id);
-        
+        $page = Page::find($id);
+        return view('pages.index',compact('page','id'));
+    }
+    public function update($id, Request $request)
+    {
+        $page  = Page::find($id);
         $page->name = request('name');        
         $page->publish = $request->has('publish');
         $page->save();  
-        return response()->json($page);   
-
-    
+        
+        // return json_encode(array('statusCode'=>200));
     }
 
     /**
@@ -115,7 +101,7 @@ class PageController extends Controller
     public function destroy($id)
     {
         $page = Page::find($id)->delete();
-
-        return response()->json(['success'=>'Data Deleted successfully']);
+        return json_encode(array('statusCode'=>200));
+        // return response()->json(['success'=>'Data Deleted successfully']);
     }
 }

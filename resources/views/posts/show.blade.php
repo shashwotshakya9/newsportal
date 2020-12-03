@@ -27,8 +27,24 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>Author:</strong>
+                <div id="data-container">{{ $post->author->name }}</div>
+            </div>
+            
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Categories:</strong><br>
+                @foreach($post->categories as $category)
+                <span>{{ $category->name }}<br></span>
+                @endforeach
+            </div>
+            
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>Content:</strong>
-                <div id="data-container">{{ $post->detail }}</div>
+                <div id="data-container">{!! $post->detail !!}</div>
             </div>
             
         </div>

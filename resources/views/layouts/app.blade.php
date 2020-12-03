@@ -88,7 +88,7 @@
                         <li><a class="nav-link" href="{{ route('author.index') }}">Manage Authors</a></li>  
                         <li><a class="nav-link" href="{{ route('newsportal.index') }}">News Portal</a></li>
                         <li><a class="nav-link" href="{{ route('pages.index') }}">Static Page</a></li>
-                        <li><a class="nav-link" href="{{ route('ajaxpages.index') }}">Ajax Page</a></li>
+                        
                                                     
                         
                         <li class="nav-item dropdown">

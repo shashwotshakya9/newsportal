@@ -131,7 +131,7 @@ class PostController extends Controller
             $aut[$author->id] = $author->name;
         }
        // return the view and pass in the var we previously created
-       return view('posts.edit')->withPost($post)->withCategories($categories2);
+       return view('posts.edit')->withPost($post)->withCategories($categories2)->withAuthors($authors);
   
         
         // return view('posts.edit',['post'=>$post,'categories'=>$categories]);

@@ -24,7 +24,7 @@ use App\Http\Controllers\AjaxpageController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
@@ -55,13 +55,21 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('updateauthor/{id}', [App\Http\Controllers\AuthorController::class, 'update']);
 
     Route::resource('pages', PageController::class);
+    Route::resource('page', PageController::class);      
     Route::post('addpage', [App\Http\Controllers\PageController::class, 'store'])->name('add.page');
-    Route::put('updatepage', [App\Http\Controllers\PageController::class, 'update'])->name('update.page');
-
     Route::POST('/pages/getData',[App\Http\Controllers\PageController::class, 'getData']);
+    Route::get('pages/{id}', [App\Http\Controllers\PageController::class, 'edit'])->name('edit.page');
 
-    Route::get('editpage/{id}', [App\Http\Controllers\PageController::class, 'getDatabyID']);
+    Route::PUT('updatepage/{id}', [App\Http\Controllers\PageController::class, 'update']);
+
     
-    Route::resource('ajaxpages', AjaxpageController::class);
+
+    // Route::get('editpage/{id}', [App\Http\Controllers\PageController::class, 'getDatabyID']);
+    
+    
    
+
+   
+    
+
 });
